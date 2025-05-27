@@ -1,7 +1,14 @@
 import axios from 'axios';
 import { Recipe, RecipeCreate } from '../types/Recipe';
 
-const API_BASE_URL = 'http://localhost:8000';
+// Use same host as frontend, but port 8000 for API
+const getApiBaseUrl = () => {
+  const protocol = window.location.protocol;
+  const hostname = window.location.hostname;
+  return `${protocol}//${hostname}:8000`;
+};
+
+const API_BASE_URL = getApiBaseUrl();
 
 const api = axios.create({
   baseURL: API_BASE_URL,

@@ -20,10 +20,10 @@ if [ -z "$VIRTUAL_ENV" ]; then
 fi
 
 # Install dependencies if not already installed
-if ! python -m pip show fastapi > /dev/null 2>&1; then
+if ! python3 -m pip show fastapi > /dev/null 2>&1; then
     echo "Installing dependencies..."
-    python -m pip install --upgrade pip
-    python -m pip install fastapi uvicorn sqlalchemy pydantic python-multipart
+    python3 -m pip install --upgrade pip
+    python3 -m pip install fastapi uvicorn sqlalchemy pydantic python-multipart
 fi
 
 # Seed database with sample data
