@@ -146,4 +146,4 @@ The app comes with 5 sample recipes:
 - Recipe sharing and social features
 - Advanced search with ingredients
 - Meal planning and shopping lists
-- Recipe import from URLs# recipe-app
+- Recipe import from URLs
