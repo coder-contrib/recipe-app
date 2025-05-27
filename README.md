@@ -59,24 +59,16 @@ coder-demo/
    cd backend
    ```
 
-2. Create and activate a virtual environment:
-   ```bash
-   python3 -m venv venv
-   source venv/bin/activate  # On Windows: venv\\Scripts\\activate
-   ```
-
-3. Install dependencies:
-   ```bash
-   pip install fastapi uvicorn sqlalchemy pydantic python-multipart
-   ```
-
-4. Start the backend server:
+2. Start the backend server (this will auto-create venv and install dependencies):
    ```bash
    ./start.sh
    ```
    
-   Or manually:
+   Or set up manually:
    ```bash
+   python3 -m venv venv
+   source venv/bin/activate  # On Windows: venv\\Scripts\\activate
+   pip install fastapi uvicorn sqlalchemy pydantic python-multipart
    python seed_data.py  # Add sample data
    uvicorn main:app --reload --host 0.0.0.0 --port 8000
    ```
