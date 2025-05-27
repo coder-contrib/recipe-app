@@ -59,9 +59,14 @@ coder-demo/
    cd backend
    ```
 
-2. Start the backend server (this will auto-create venv and install dependencies):
+2. Start the backend server:
    ```bash
    ./start.sh
+   ```
+   
+   For devcontainer/codespace environments, use:
+   ```bash
+   ./start_simple.sh
    ```
    
    Or set up manually:

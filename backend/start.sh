@@ -1,4 +1,6 @@
 #!/bin/bash
+set -e  # Exit on any error
+
 echo "Starting Recipe API Backend..."
 
 # Create virtual environment if it doesn't exist
@@ -8,16 +10,26 @@ if [ ! -d "venv" ]; then
 fi
 
 # Activate virtual environment
+echo "Activating virtual environment..."
 source venv/bin/activate
 
+# Verify activation worked
+if [ -z "$VIRTUAL_ENV" ]; then
+    echo "Error: Failed to activate virtual environment"
+    exit 1
+fi
+
 # Install dependencies if not already installed
-if ! pip show fastapi > /dev/null 2>&1; then
+if ! python -m pip show fastapi > /dev/null 2>&1; then
     echo "Installing dependencies..."
-    pip install fastapi uvicorn sqlalchemy pydantic python-multipart
+    python -m pip install --upgrade pip
+    python -m pip install fastapi uvicorn sqlalchemy pydantic python-multipart
 fi
 
 # Seed database with sample data
+echo "Seeding database..."
 python seed_data.py
 
 # Start the server
-uvicorn main:app --reload --host 0.0.0.0 --port 8000
+echo "Starting FastAPI server..."
+python -m uvicorn main:app --reload --host 0.0.0.0 --port 8000
